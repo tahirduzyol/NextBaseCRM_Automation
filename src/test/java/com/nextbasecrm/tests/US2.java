@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class US2 {
     WebDriver driver;
 
+
     @BeforeMethod
     public void setupMethod(){
         String browserType = ConfigurationReader.getProperty("browser");
