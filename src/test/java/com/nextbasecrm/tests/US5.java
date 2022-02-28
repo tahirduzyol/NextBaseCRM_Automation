@@ -1,5 +1,6 @@
 package com.nextbasecrm.tests;
 
+import com.nextbasecrm.utilities.ConfigurationReader;
 import com.nextbasecrm.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,20 +17,18 @@ public class US5 {
 
     @BeforeMethod
     public void setUp() {
-        driver = WebDriverFactory.getDriver("chrome");
+        driver = WebDriverFactory.getDriver(ConfigurationReader.getProperty("browser"));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         //go to "https://login2.nextbasecrm.com/stream/"
-        driver.get("https://login2.nextbasecrm.com/");
+        driver.get(ConfigurationReader.getProperty("env"));
 
-        //enter valid userName : hr46@cydeo.com
-        String userName = "hr46@cydeo.com";
-        driver.findElement(By.xpath("//input[@type = 'text']")).sendKeys(userName);
+        //enter valid userName
+        driver.findElement(By.xpath("//input[@type = 'text']")).sendKeys(ConfigurationReader.getProperty("username"));
 
-        //enter valid password: UserUser
-        String password = "UserUser";
-        driver.findElement(By.xpath("//input[@type = 'password']")).sendKeys(password);
+        //enter valid password
+        driver.findElement(By.xpath("//input[@type = 'password']")).sendKeys(ConfigurationReader.getProperty("password"));
 
         //click Log In button
         driver.findElement(By.xpath("//input[@type = 'submit']")).click();
