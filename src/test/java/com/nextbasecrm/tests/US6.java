@@ -7,6 +7,7 @@ import com.nextbasecrm.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,7 +15,6 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public class US6 {
-
     public WebDriver driver;
 
     @BeforeMethod
@@ -24,6 +24,11 @@ public class US6 {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(ConfigurationReader.getProperty("env"));
 
+    }
+    @AfterMethod
+
+    public void TearDown(){
+        driver.quit();
 
     }
     @DataProvider(name = "logins")
@@ -36,7 +41,7 @@ public class US6 {
 
     @Test(dataProvider = "logins")
 
-    public void ifUserCanSeeAllOptionsUnderTheMoreButton(String login) {
+    public void project(String login) {
         CRM_Utilities.crm_login(driver,login  , "UserUser");
 
         WebElement moreButton = driver.findElement(By.xpath("//span[@id='feed-add-post-form-link-text']"));
@@ -55,11 +60,5 @@ public class US6 {
         WebElement popupbutton4 = driver.findElement(By.xpath("(//span[@class='menu-popup-item-text'])[4]"));
         System.out.println("Pop up button 4 (Workflow)  is displayed  = " + popupbutton4.isDisplayed());
 
-        driver.quit();
-
     }
-
-
-
-
 }
