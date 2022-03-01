@@ -41,7 +41,7 @@ public class US6 {
 
     @Test(dataProvider = "logins")
 
-    public void project(String login) {
+    public void allOptionsUnderMoreButtons(String login) {
         CRM_Utilities.crm_login(driver,login  , "UserUser");
 
         WebElement moreButton = driver.findElement(By.xpath("//span[@id='feed-add-post-form-link-text']"));
