@@ -1,5 +1,6 @@
 package com.nextbasecrm.tests;
 
+import com.nextbasecrm.utilities.CRM_Utilities;
 import com.nextbasecrm.utilities.ConfigurationReader;
 import com.nextbasecrm.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
@@ -24,14 +25,7 @@ public class US5 {
         //go to "https://login2.nextbasecrm.com/stream/"
         driver.get(ConfigurationReader.getProperty("env"));
 
-        //enter valid userName
-        driver.findElement(By.xpath("//input[@type = 'text']")).sendKeys(ConfigurationReader.getProperty("username"));
-
-        //enter valid password
-        driver.findElement(By.xpath("//input[@type = 'password']")).sendKeys(ConfigurationReader.getProperty("password"));
-
-        //click Log In button
-        driver.findElement(By.xpath("//input[@type = 'submit']")).click();
+        CRM_Utilities.crm_login(driver, ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password") );
 
     }
 
