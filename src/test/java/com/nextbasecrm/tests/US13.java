@@ -44,7 +44,7 @@ public class US13 {
 
         // User writes an Appreciation message
         driver.switchTo().frame(driver.findElement(By.cssSelector(".bx-editor-iframe")));
-        driver.findElement(By.tagName("body")).sendKeys("Good Job!");
+        driver.findElement(By.tagName("body")).sendKeys("This is a test!");
 
         // User clicks the SEND button
         driver.switchTo().defaultContent();
@@ -52,7 +52,7 @@ public class US13 {
 
         // Verify the Appreciation is displayed on the feed
         WebElement feedMsg= driver.findElement(By.xpath("//div[starts-with(@id,'blog_post_body')]"));
-        String expected="Good Job!";
+        String expected="This is a test!";
         String actual=feedMsg.getText();
         Assert.assertEquals(actual,expected);
 
@@ -76,6 +76,8 @@ public class US13 {
         String actualText=warningMsg.getText();
         Assert.assertEquals(actualText,expectedText,"Warning Message did not appear!");
     }
+
+
 
 
 
