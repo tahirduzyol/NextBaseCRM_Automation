@@ -23,7 +23,8 @@ public class US6 {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(ConfigurationReader.getProperty("env"));
-
+        //ozge
+       //ozge2
     }
     @AfterMethod
 
@@ -31,18 +32,19 @@ public class US6 {
         driver.quit();
 
     }
-    @DataProvider(name = "logins")
+    @DataProvider(name = "logins")   // key = value
     public Object[][] logins(){
-        return new Object[][] { {"hr46@cydeo.com"}, {"helpdesk46@cydeo.com"}, {"marketing46@cydeo.com"},
-                {"hr47@cydeo.com"}, {"helpdesk47@cydeo.com"}, {"marketing47@cydeo.com"},
-                {"hr48@cydeo.com"}, {"helpdesk48@cydeo.com"}, {"marketing48@cydeo.com"} };
+        return new Object[][] { {"hr46@cydeo.com"}, {"helpdesk46@cydeo.com"},
+                                {"hr47@cydeo.com"}, {"helpdesk47@cydeo.com"},
+                                {"hr48@cydeo.com"}, {"helpdesk48@cydeo.com"}};
+
     }
 
 
-    @Test(dataProvider = "logins")
+    @Test(dataProvider = "logins")     //write your methods name inside
 
     public void allOptionsUnderMoreButtons(String login) {
-        CRM_Utilities.crm_login(driver,login  , "UserUser");
+        CRM_Utilities.crm_login(driver ,login  , "UserUser");
 
         WebElement moreButton = driver.findElement(By.xpath("//span[@id='feed-add-post-form-link-text']"));
         System.out.println("More BUTTON is displayed " + moreButton.isDisplayed());
