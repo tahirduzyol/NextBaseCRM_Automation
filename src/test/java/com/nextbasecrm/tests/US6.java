@@ -25,6 +25,7 @@ public class US6 {
         driver.get(ConfigurationReader.getProperty("env"));
         //ozge
        //ozge2
+        //ozge3
     }
     @AfterMethod
 
